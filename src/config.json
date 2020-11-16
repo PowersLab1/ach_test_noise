@@ -1,6 +1,6 @@
 {
   "taskVersion": "1.0.0",
-  "taskName": "auditory_short_t",
+  "taskName": "auditory_short_t_6m",
   "debug": false,
   "awsLambda": {
     "saveTaskData": {

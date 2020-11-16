@@ -58,9 +58,9 @@ class VisualStimulus extends Component {
         if (this.props.showContrast) {
           //const val = (Math.abs(Math.floor((x - xOffset + l) / l) % 2) ^ Math.abs(Math.floor((y - yOffset) / l) % 2)) * 163;
           const val = Math.abs(Math.floor((y - yOffset) / l) % 2) * 163 ;
-          data[(x + y * w) * 4 + 0] = val*0;
-          data[(x + y * w) * 4 + 1] = val*0.49;
-          data[(x + y * w) * 4 + 2] = val*0;
+          data[(x + y * w) * 4 + 0] = 0;
+          data[(x + y * w) * 4 + 1] = 0;
+          data[(x + y * w) * 4 + 2] = val;
           data[(x + y * w) * 4 + 3] = 255;
         } else {
           data[(x + y * w) * 4 + 0] = 0;
