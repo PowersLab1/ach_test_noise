@@ -57,7 +57,7 @@ class VisualStimulus extends Component {
       for (var y = 0; y < h; y++) {
         if (this.props.showContrast) {
           //const val = (Math.abs(Math.floor((x - xOffset + l) / l) % 2) ^ Math.abs(Math.floor((y - yOffset) / l) % 2)) * 163;
-          const val = Math.abs(Math.floor((y - yOffset) / l) % 2) * 163 ;
+          const val = Math.abs(Math.floor((x - xOffset) / l) % 2) * 163 ; //vertical stripes
           data[(x + y * w) * 4 + 0] = 0;
           data[(x + y * w) * 4 + 1] = 0;
           data[(x + y * w) * 4 + 2] = val;
