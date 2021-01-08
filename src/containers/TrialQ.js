@@ -25,7 +25,7 @@ class TrialQ extends Component {
     // Decibel
     let tGuess1 = 55,
       tGuess2 = 55,
-      tGuessSd = 10,
+      tGuessSd = 5,
       pThreshold = 0.75,
       beta = 0.1,
       delta = 0.01,
