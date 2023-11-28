@@ -1,6 +1,6 @@
 {
-  "homepage": "http://powerslab1.github.io/ACH_app_short_t_6m",
-  "name": "ach_app_short_t_6m",
+  "homepage": "http://powerslab1.github.io/ach_test_noise",
+  "name": "ach_test_noise",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
