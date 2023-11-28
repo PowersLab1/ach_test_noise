@@ -1,6 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import Welcome from "./containers/Welcome";
+import Instructions from "./containers/Instructions";
 import NotFound from "./containers/NotFound";
+import Complete from "./containers/Complete";
+import Continue from "./containers/Continue";
+import Continue_rating from "./containers/Continue_rating";
+import TrialQ from "./containers/TrialQ";
 import Trial_P from "./containers/Trial_P";
 import Trial_P_rating from "./containers/Trial_P_rating";
 import OnceMore from "./containers/OnceMore";
