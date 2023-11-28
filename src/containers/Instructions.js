@@ -39,13 +39,9 @@ class Instructions extends Component {
             <div className="text-container">
               <p className="Instructions-text">
               This is a hearing test.
-              <br /><br /> Auditory white noise (like static radio) will be played throughout the experiment.
-              <br /><br /> A tone might play while the white noise continues when there are stripes on the screen.
-              <br /><br />Only respond when you see the stripes.
-              <br /><br /> Press  <font size="+2">  <b> "Q"/YES </b> </font> if you <b> DO </b>hear the tone.
-              <br /><br /> Press <font size="+2"> <b> "E"/NO </b> </font> if you <b> DO NOT </b> hear the tone.
-              <br /><br /> Please respond as <b> QUICKLY </b> and as <b> ACCURATELY </b> as you <b> POSSIBLY CAN </b>
-              <br /><br /><br /> PRESS "Q"/YES TO BEGIN A SHORT PRACTICE SESSION
+              <br /><br /> Please determine the maximum acceptable volume of the white noise (100% is ideal!)
+              <br /><br /> You can close this tab (or hit "back" if you didn't open this in a new tab) once you record the volume
+              <br /><br />Press "Q to continue"
               </p>
             </div>
             </header>
