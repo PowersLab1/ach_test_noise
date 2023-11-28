@@ -38,9 +38,9 @@ class Instructions extends Component {
             <header className="Instructions-header">
             <div className="text-container">
               <p className="Instructions-text">
-              This is a hearing test.
-              <br /><br /> Please determine the maximum acceptable volume of the white noise (100% is ideal!)
-              <br /><br /> You can close this tab (or hit "back" if you didn't open this in a new tab) once you record the volume
+              Once you hear the white noise, please adjust to find the maximum acceptable volume of the white noise (100% is ideal!)
+              <br /><br /> Make sure you record the final volume and do not change it
+              <br /><br /> As soon as you determine your volume, close this tab (or hit "back" if you didn't open this in a new tab)
               <br /><br />Press "Q to continue"
               </p>
             </div>
