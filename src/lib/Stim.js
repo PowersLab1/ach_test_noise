@@ -117,7 +117,7 @@ export function playWhiteNoise(audioContext) {
     var nowBuffering = noiseBuffer.getChannelData(channel);
     for (var i = 0; i < noiseBuffer.length; i++) {
       // audio needs to be in [-1.0; 1.0]
-      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(40, 0.0150, 78.3);
+      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(64, 0.0150, 78.3);
     }
   }
 
@@ -146,7 +146,7 @@ export function playPinkNoise(audioContext) {
         b4 = 0.55000 * b4 + white * 0.5329522;
         b5 = -0.7616 * b5 - white * 0.0168980;
         output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
-        output[i] *= 0.05; // (roughly) compensate for gain
+        output[i] *= 0.088; // (roughly) compensate for gain
         b6 = white * 0.115926;
       }
     }
@@ -169,7 +169,7 @@ export function playBrownianNoise(audioContext) {
               var white = Math.random() * 2 - 1;
               output[i] = (lastOut + (0.02 * white)) / 1.02;
               lastOut = output[i];
-              output[i] *= 1.5; // (roughly) compensate for gain
+              output[i] *= 2.975; // (roughly) compensate for gain
           }
       }
       return node;
