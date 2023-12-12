@@ -6,7 +6,7 @@ import Trial from './Trial';
 
 import {create_blocks_singleton} from '../lib/tt_blocks';
 import {setQuestData, processAndStoreData, getProcessedData} from '../store';
-import { whitenoisedb } from '../lib/stim.js';
+import { whitenoisedb } from '../lib/Stim.js';
 
 
 var questlib = require('questlib');

@@ -6,6 +6,7 @@ export const auditoryStim = createAuditoryStim();
 export function setWhiteNoiseDb(newDb) {
   whitenoisedb = newDb;
 }
+export { whitenoisedb };
 
 /*****************************
  *                           *
