@@ -1,8 +1,11 @@
 export const visualStim = createVisualStim();
 export const patch = createPatch(visualStim);
 export const stimulus_blank = createGabor(patch, 0);
-
 export const auditoryStim = createAuditoryStim();
+// New function to update whitenoisedb -- decreases total volume
+export function setWhiteNoiseDb(newDb) {
+  whitenoisedb = newDb;
+}
 
 /*****************************
  *                           *
@@ -123,10 +126,7 @@ export function playWhiteNoise(audioContext) {
     }
   }
 
-  // New function to update whitenoisedb -- decreases total volume
- export function setWhiteNoiseDb(newDb) {
-  whitenoisedb = newDb;
-}
+  
 
   var whiteNoise = audioContext.createBufferSource();
   whiteNoise.buffer = noiseBuffer;
