@@ -109,9 +109,14 @@ function createPatch(stim) {
  }
  let whitenoisedb = 80; // Default volume in decibels
 
+ let whiteNoiseSource = null;
  
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
+  console.log("Playing white noise at volume (dB):", whitenoisedb);
+  if (whiteNoiseSource) {
+    whiteNoiseSource.stop(); // Stop the previous white noise
+  }
   //console.log(2 * audioContext.sampleRate
   // Create buffer for 2 seconds
   var bufferSize = 3 * audioContext.sampleRate,
