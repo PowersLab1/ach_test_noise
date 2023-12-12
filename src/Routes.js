@@ -6,6 +6,7 @@ import NotFound from "./containers/NotFound";
 import Complete from "./containers/Complete";
 import Continue from "./containers/Continue";
 import Continue_rating from "./containers/Continue_rating";
+import VolumeCalibrationInstructions from "./containers/VolumeCalibrationInstructions";
 import TrialV from "./containers/TrialV";
 import TrialQ from "./containers/TrialQ";
 import Trial_P from "./containers/Trial_P";
@@ -27,8 +28,9 @@ export default () =>
   <Switch>
     <Route path="/" exact component={Welcome} />
     <Route path="/Welcome" exact component={Welcome} />
-    <Route path="/Instructions" exact component={Instructions} />
+    <Route path="/VolumeCalibrationInstructions" exact component={VolumeCalibrationInstructions} />
     <Route path="/TrialV" exact component={TrialV} />
+    <Route path="/Instructions" exact component={Instructions} />
     <Route path="/Trial_P" exact component={Trial_P} />
     <Route path="/OnceMore" exact component={OnceMore} />
     <Route path="/Continue" exact component={Continue} />
