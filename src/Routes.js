@@ -6,6 +6,7 @@ import NotFound from "./containers/NotFound";
 import Complete from "./containers/Complete";
 import Continue from "./containers/Continue";
 import Continue_rating from "./containers/Continue_rating";
+import TrialV from "./containers/TrialV";
 import TrialQ from "./containers/TrialQ";
 import Trial_P from "./containers/Trial_P";
 import Trial_P_rating from "./containers/Trial_P_rating";
@@ -27,6 +28,7 @@ export default () =>
     <Route path="/" exact component={Welcome} />
     <Route path="/Welcome" exact component={Welcome} />
     <Route path="/Instructions" exact component={Instructions} />
+    <Route path="/TrialV" exact component={TrialV} />
     <Route path="/Trial_P" exact component={Trial_P} />
     <Route path="/OnceMore" exact component={OnceMore} />
     <Route path="/Continue" exact component={Continue} />

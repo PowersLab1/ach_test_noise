@@ -103,7 +103,9 @@ function createPatch(stim) {
    osc.start(audioContext.currentTime);
    osc.stop(audioContext.currentTime+ms/1000);
  }
+ let whitenoisedb = 80; // Default volume in decibels
 
+ 
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
   //console.log(2 * audioContext.sampleRate
@@ -117,9 +119,14 @@ export function playWhiteNoise(audioContext) {
     var nowBuffering = noiseBuffer.getChannelData(channel);
     for (var i = 0; i < noiseBuffer.length; i++) {
       // audio needs to be in [-1.0; 1.0]
-      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(64, 0.0150, 78.3);
+      nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3); //changing the first value changes the volume of the whitenoise
     }
   }
+
+  // New function to update whitenoisedb -- decreases total volume
+ export function setWhiteNoiseDb(newDb) {
+  whitenoisedb = newDb;
+}
 
   var whiteNoise = audioContext.createBufferSource();
   whiteNoise.buffer = noiseBuffer;
@@ -129,7 +136,7 @@ export function playWhiteNoise(audioContext) {
 }
 
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
-export function playPinkNoise(audioContext) {
+export function playPinkNoise(audioContext) { //this function is not used
   var bufferSize = 4096;
   var pinkNoise = (function() {
     var b0, b1, b2, b3, b4, b5, b6;
