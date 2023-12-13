@@ -137,9 +137,14 @@ export function playWhiteNoise(audioContext) {
   // Create a new buffer source for the white noise
   whiteNoiseSource = audioContext.createBufferSource();
   whiteNoiseSource.buffer = noiseBuffer;
+  whiteNoiseSource.loop = true;
   whiteNoiseSource.connect(audioContext.destination);
   whiteNoiseSource.start();
 } //newplayWhiteNoise ends here
+
+function db2scale(desiredDb, standardScale, standardDb) {
+  return Math.pow(10, (desiredDb - standardDb) / 20) * standardScale;
+}
 
 // // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
 // export function playWhiteNoise(audioContext) {
@@ -219,7 +224,5 @@ export function playBrownianNoise(audioContext) {
   brownNoise.connect(audioContext.destination);
 }
 
-function db2scale(desiredDb, standardScale, standardDb) {
-  return Math.pow(10, (desiredDb - standardDb) / 20) * standardScale;
-}
+
 

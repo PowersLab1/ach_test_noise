@@ -75,7 +75,7 @@ class VolumeCalibrationInstructions extends Component {
               <br /><br /> If the noise is <b>intolerable</b>, <b>press "E"</b> and we will decrease the volume and play it again.
               <br /><br /> ONLY HIT "E" if you <b>absolutely need to</b>. REMEMBER it <b>should be loud</b>!
               <br /><br /> You will have the option to hit "E" again if it is still intolerably loud
-              <br /><br /> If the <b> volume is OK</b> then  <b>press "Q"</b> and the game will continue!
+              <br /><br /> If the <b>volume is tolerable</b> then  <b>press "Q"</b> and the game will continue!
               <br /><br /> <b> Press Q to check the white noise volume</b> 
               </p>
             </div>
