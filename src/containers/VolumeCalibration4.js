@@ -68,7 +68,7 @@ class VolumeCalibration4 extends Component {
                 <div className="text-container">
                     <p className="VolumeInstructions-text">
                         Is this volume better?
-                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test 
+                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test Instructions
                         <br /><br /> IF INTOLERABLE: <b>Press E</b> to try a lower volume 
                     </p>
                 </div>
