@@ -9,7 +9,7 @@ class VolumeCalibration3 extends Component {
         super(props);
         this.state = {
             continue: false,
-            volumeLevel: 70, // New low level ADJUST ACCORDING TO DESIRED STEP!
+            volumeLevel: 74, // New low level ADJUST ACCORDING TO DESIRED STEP!
             decreaseCount: 0, // Counter for the number of times volume is decreased
             redirect: null // State to manage redirection
         }
@@ -24,7 +24,7 @@ class VolumeCalibration3 extends Component {
     decreaseVolume = () => {
         if (this.state.decreaseCount < 1) {
             this.setState(prevState => ({
-                volumeLevel: prevState.volumeLevel - 5, // Decrease by 15 dB
+                volumeLevel: prevState.volumeLevel - 3, // Decrease by 3 dB
                 decreaseCount: prevState.decreaseCount + 1
             }), () => {
                 setWhiteNoiseDb(this.state.volumeLevel); // Update the volume in Stim.js
@@ -68,7 +68,7 @@ class VolumeCalibration3 extends Component {
                 <div className="text-container">
                     <p className="VolumeInstructions-text">
                         Is this volume better?
-                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test 
+                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test Instructions
                         <br /><br /> IF INTOLERABLE: <b>Press E</b> to try a lower volume 
                     </p>
                 </div>

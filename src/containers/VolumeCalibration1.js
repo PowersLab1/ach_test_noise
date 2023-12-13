@@ -23,7 +23,7 @@ class VolumeCalibration1 extends Component {
     decreaseVolume = () => {
         if (this.state.decreaseCount < 1) {
             this.setState(prevState => ({
-                volumeLevel: prevState.volumeLevel - 5, // Decrease by 5 dB
+                volumeLevel: prevState.volumeLevel - 3, // Decrease by 5 dB
                 decreaseCount: prevState.decreaseCount + 1
             }), () => {
                 setWhiteNoiseDb(this.state.volumeLevel); // Update the volume in Stim.js
@@ -66,8 +66,8 @@ class VolumeCalibration1 extends Component {
                 <header className="VolumeInstructions-header">
                 <div className="text-container">
                     <p className="VolumeInstructions-text">
-                        Is this noise  loud but tolerable?
-                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test 
+                        Is this noise loud but tolerable?
+                        <br /><br /> IF ACCEPTABLE: <b>Press Q</b> to continue to the Hearing Test Instructions
                         <br /><br /> IF INTOLERABLE: <b>Press E</b> to try a lower volume 
                     </p>
                 </div>

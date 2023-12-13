@@ -9,7 +9,7 @@ class VolumeCalibration4 extends Component {
         super(props);
         this.state = {
             continue: false,
-            volumeLevel: 65, // New low level ADJUST ACCORDING TO DESIRED STEP!
+            volumeLevel: 71, // New low level ADJUST ACCORDING TO DESIRED STEP!
             decreaseCount: 0, // Counter for the number of times volume is decreased
             redirect: null // State to manage redirection
         }
@@ -24,7 +24,7 @@ class VolumeCalibration4 extends Component {
     decreaseVolume = () => {
         if (this.state.decreaseCount < 1) {
             this.setState(prevState => ({
-                volumeLevel: prevState.volumeLevel - 5, // Decrease by 15 dB
+                volumeLevel: prevState.volumeLevel - 3, // Decrease by 3 dB
                 decreaseCount: prevState.decreaseCount + 1
             }), () => {
                 setWhiteNoiseDb(this.state.volumeLevel); // Update the volume in Stim.js
