@@ -33,11 +33,11 @@ class TrialQ extends Component {
       delta = 0.01,
       gamma = 0.01,
       grain = 0.15,
-      range = 20,
-      whitenoisevolume = whitenoisedb;
+      range = 20;
+     // whitenoisevolume = whitenoisedb; //we need to add whitenoisedb into the datafile (though it's always 25 more than tGuess)
 
-    this.q1 = new questlib.Quest(tGuess1, tGuessSd, pThreshold, beta, delta, gamma, grain, range, whitenoisevolume);
-    this.q2 = new questlib.Quest(tGuess2, tGuessSd, pThreshold, beta, delta, gamma, grain, range, whitenoisevolume);
+    this.q1 = new questlib.Quest(tGuess1, tGuessSd, pThreshold, beta, delta, gamma, grain, range); //want to add whitenoisevolume to have it at the end but it doesn't save
+    this.q2 = new questlib.Quest(tGuess2, tGuessSd, pThreshold, beta, delta, gamma, grain, range);
 
     // NOTE: Specify how many trials to run for each staircase here.
     // E.g., numTrialsPerStaircase = 40 means 80 trials total,
