@@ -113,66 +113,70 @@ function createPatch(stim) {
 
  //THIS IS A NEW playWhiteNoise function which stops and disconnects the whitenoisesource each time and creates a new buffer source connected to AudioContext
  // Courtesy of https://noisehack.com/generate-noise-web-audio-api/
+// export function playWhiteNoise(audioContext) {
+//   console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
+
+//   // Stop and disconnect the previous white noise source, if it exists
+//   if (whiteNoiseSource) {
+//       whiteNoiseSource.stop();
+//       whiteNoiseSource.disconnect();
+//   }
+
+//   // Create buffer for 3 seconds
+//   var bufferSize = 3 * audioContext.sampleRate,
+//       noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate);
+
+//   for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
+//       // This gives us the actual ArrayBuffer that contains the data
+//       var nowBuffering = noiseBuffer.getChannelData(channel);
+//       for (var i = 0; i < bufferSize; i++) {
+//           // audio needs to be in [-1.0; 1.0]
+//           nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3); // Apply the current volume level
+//       }
+//   }
+//   // Create a new buffer source for the white noise
+//   whiteNoiseSource = audioContext.createBufferSource();
+//   whiteNoiseSource.buffer = noiseBuffer;
+//   whiteNoiseSource.loop = true;
+//   whiteNoiseSource.connect(audioContext.destination);
+//   whiteNoiseSource.start();
+// } //newplayWhiteNoise ends here
+
+//Here is an even more modified playwhitenoise which updates the buffer without creating a new white noise source to see if this fixes the delay issue
+// Courtesy of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
   console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
-
-  // Stop and disconnect the previous white noise source, if it exists
-  if (whiteNoiseSource) {
-      whiteNoiseSource.stop();
-      whiteNoiseSource.disconnect();
-  }
 
   // Create buffer for 3 seconds
   var bufferSize = 3 * audioContext.sampleRate,
       noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate);
 
   for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
-      // This gives us the actual ArrayBuffer that contains the data
       var nowBuffering = noiseBuffer.getChannelData(channel);
       for (var i = 0; i < bufferSize; i++) {
-          // audio needs to be in [-1.0; 1.0]
-          nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3); // Apply the current volume level
+          nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3);
       }
   }
-  // Create a new buffer source for the white noise
-  whiteNoiseSource = audioContext.createBufferSource();
+
+  // Only create a new white noise source if it doesn't exist
+  if (!whiteNoiseSource) {
+      whiteNoiseSource = audioContext.createBufferSource();
+      whiteNoiseSource.loop = true;
+      whiteNoiseSource.connect(audioContext.destination);
+  }
+
+  // Update the buffer and (re)start the source
   whiteNoiseSource.buffer = noiseBuffer;
-  whiteNoiseSource.loop = true;
-  whiteNoiseSource.connect(audioContext.destination);
-  whiteNoiseSource.start();
-} //newplayWhiteNoise ends here
+  if (whiteNoiseSource.state !== 'playing') {
+      whiteNoiseSource.start();
+  }
+}
+
 
 function db2scale(desiredDb, standardScale, standardDb) {
   return Math.pow(10, (desiredDb - standardDb) / 20) * standardScale;
 }
 
-// // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
-// export function playWhiteNoise(audioContext) {
-//   console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
-//   if (whiteNoiseSource) {
-//     whiteNoiseSource.stop(); // Stop the previous white noise
-//   }
-//   //console.log(2 * audioContext.sampleRate
-//   // Create buffer for 2 seconds
-//   var bufferSize = 3 * audioContext.sampleRate,
-//    noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate),
-//    output = noiseBuffer.getChannelData(0);
-
-//   for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
-//     // This gives us the actual ArrayBuffer that contains the data
-//     var nowBuffering = noiseBuffer.getChannelData(channel);
-//     for (var i = 0; i < noiseBuffer.length; i++) {
-//       // audio needs to be in [-1.0; 1.0]
-//       nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3); //changing the first value changes the volume of the whitenoise
-//     }
-//   }
-
-//   var whiteNoise = audioContext.createBufferSource();
-//   whiteNoise.buffer = noiseBuffer;
-//   whiteNoise.loop = true;
-//   whiteNoise.connect(audioContext.destination);
-//   whiteNoise.start(0);
-// }
 
 // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
 export function playPinkNoise(audioContext) { //this function is not used
@@ -225,4 +229,31 @@ export function playBrownianNoise(audioContext) {
 }
 
 
+// // Courtsey of https://noisehack.com/generate-noise-web-audio-api/
+// export function playWhiteNoise(audioContext) {
+//   console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
+//   if (whiteNoiseSource) {
+//     whiteNoiseSource.stop(); // Stop the previous white noise
+//   }
+//   //console.log(2 * audioContext.sampleRate
+//   // Create buffer for 2 seconds
+//   var bufferSize = 3 * audioContext.sampleRate,
+//    noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate),
+//    output = noiseBuffer.getChannelData(0);
+
+//   for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
+//     // This gives us the actual ArrayBuffer that contains the data
+//     var nowBuffering = noiseBuffer.getChannelData(channel);
+//     for (var i = 0; i < noiseBuffer.length; i++) {
+//       // audio needs to be in [-1.0; 1.0]
+//       nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3); //changing the first value changes the volume of the whitenoise
+//     }
+//   }
+
+//   var whiteNoise = audioContext.createBufferSource();
+//   whiteNoise.buffer = noiseBuffer;
+//   whiteNoise.loop = true;
+//   whiteNoise.connect(audioContext.destination);
+//   whiteNoise.start(0);
+// }
 
