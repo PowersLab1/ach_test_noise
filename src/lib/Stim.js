@@ -142,32 +142,33 @@ function createPatch(stim) {
 //   whiteNoiseSource.start();
 // } //newplayWhiteNoise ends here
 
-//Here is an even more modified playwhitenoise which updates the buffer without creating a new white noise source to see if this fixes the delay issue
+
 // Courtesy of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
-  console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
+    console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
 
-  // Create buffer for 3 seconds
-  var bufferSize = 3 * audioContext.sampleRate,
-      noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate);
+    // Create buffer for 3 seconds
+    var bufferSize = 3 * audioContext.sampleRate,
+        noiseBuffer = audioContext.createBuffer(2, bufferSize, audioContext.sampleRate);
 
-  for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
-      var nowBuffering = noiseBuffer.getChannelData(channel);
-      for (var i = 0; i < bufferSize; i++) {
-          nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3);
+    for (var channel = 0; channel < noiseBuffer.numberOfChannels; channel++) {
+        var nowBuffering = noiseBuffer.getChannelData(channel);
+        for (var i = 0; i < bufferSize; i++) {
+            nowBuffering[i] = (Math.random() * 2 - 1) * db2scale(whitenoisedb, 0.0150, 78.3);
+        }
+    }
+
+    if (!whiteNoiseSource || whiteNoiseSource.buffer !== noiseBuffer) {
+      // If whiteNoiseSource does not exist or its buffer is different, recreate it
+      if (whiteNoiseSource) {
+          whiteNoiseSource.stop();
+          whiteNoiseSource.disconnect();
       }
-  }
 
-  // Only create a new white noise source if it doesn't exist
-  if (!whiteNoiseSource) {
       whiteNoiseSource = audioContext.createBufferSource();
+      whiteNoiseSource.buffer = noiseBuffer;
       whiteNoiseSource.loop = true;
       whiteNoiseSource.connect(audioContext.destination);
-  }
-
-  // Update the buffer and (re)start the source
-  whiteNoiseSource.buffer = noiseBuffer;
-  if (whiteNoiseSource.state !== 'playing') {
       whiteNoiseSource.start();
   }
 }
