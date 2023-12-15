@@ -13,7 +13,7 @@ import VolumeCalibration3 from "./containers/VolumeCalibration3";
 import VolumeCalibration4 from "./containers/VolumeCalibration4";
 import VolumeCalibration5 from "./containers/VolumeCalibration5";
 import VolumeCalibrationEnd from "./containers/VolumeCalibrationEnd";
-import TrialV from "./containers/TrialV";
+//import TrialV from "./containers/TrialV";
 import TrialQ from "./containers/TrialQ";
 import Trial_P from "./containers/Trial_P";
 import Trial_P_rating from "./containers/Trial_P_rating";
@@ -41,7 +41,6 @@ export default () =>
     <Route path="/VolumeCalibration4" exact component={VolumeCalibration4} />
     <Route path="/VolumeCalibration5" exact component={VolumeCalibration5} />
     <Route path="/VolumeCalibrationEnd" exact component={VolumeCalibrationEnd} />
-    <Route path="/TrialV" exact component={TrialV} />
     <Route path="/Instructions" exact component={Instructions} />
     <Route path="/Trial_P" exact component={Trial_P} />
     <Route path="/OnceMore" exact component={OnceMore} />
