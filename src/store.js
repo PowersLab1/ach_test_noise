@@ -44,6 +44,7 @@ const questParamsToKeep = [
   'gamma',
   'grain',
   'dim',
+  'whitenoisevolume', //adding this in max 12.15.23
   'quantileOrder'
 ];
 
@@ -51,6 +52,7 @@ const questParamsToKeep = [
 export function setQuestData(
   q1,
   q2,
+  whitenoisevolume, //adding this in by max 12.15.23
   decibels_q1,
   response_q1,
   responseTime_q1,

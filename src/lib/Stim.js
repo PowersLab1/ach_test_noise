@@ -142,7 +142,7 @@ function createPatch(stim) {
 //   whiteNoiseSource.start();
 // } //newplayWhiteNoise ends here
 
-
+//this version does not stop and disconnect the the whitenoisesource everytime so as to hopefully decrease potential time lags produced by adding audicontexts eachtime 
 // Courtesy of https://noisehack.com/generate-noise-web-audio-api/
 export function playWhiteNoise(audioContext) {
     console.log("Playing white noise via playWhiteNoise at volume (dB):", whitenoisedb);
