@@ -1,5 +1,5 @@
 {
-  "taskVersion": "1.0.0",
+  "taskVersion": "1.0.0XXXAdjustableVolumeXXX",
   "taskName": "ach_test_noise",
   "debug": false,
   "awsLambda": {
