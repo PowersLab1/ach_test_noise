@@ -1,10 +1,11 @@
 import {canUseLocalStorage, encryptWithPublicKey} from "./lib/utils";
 import {visualStim, auditoryStim, whitenoisedb} from "./lib/Stim";
+import { whitenoisedb as whitenoisedbvalue } from './lib/Stim.js'; //added by max
+
 
 const config = require('./config');
 const _ = require('lodash');
 var questlib = require('questlib');
-import { whitenoisedb } from './lib/Stim.js'; //added by max
 
 
 // Global store for setting and getting task data.
@@ -169,7 +170,7 @@ export function getStoreExport() {
   const dataToExport = _.clone(LocalStorageBackedStore.store);
   dataToExport[TASK_NAME_KEY] = config.taskName;
   dataToExport["taskVersion"] = config.taskVersion;
-  dataToExport["WhiteNoiseDecibels"] = whitenoisedb;
+  dataToExport["WhiteNoiseDecibels"] = whitenoisedbvalue;
 
 
   // Inject stim data
